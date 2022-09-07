@@ -1,3 +1,4 @@
+import { error } from '@sveltejs/kit';
 import type { RequestHandler } from "@sveltejs/kit"
 
 type V2Cat = {
@@ -33,6 +34,10 @@ const catList: Record<number, V2Cat> = {
 }
 
 export const GET: RequestHandler = async function({ request }) {
+    if (Math.random() <= 0.1) {
+        throw error(500, "Service unavailable");
+    }
+
     const host = request.headers.get("host");
 
     const body = JSON.stringify(
