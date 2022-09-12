@@ -34,7 +34,7 @@ const catList: Record<number, V2Cat> = {
 }
 
 export const GET: RequestHandler = async function({ request }) {
-    if (Math.random() <= 0.1) {
+    if (Math.random() <= 0.35) {
         throw error(500, "Service unavailable");
     }
 
